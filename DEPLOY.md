@@ -26,20 +26,35 @@ If you still prefer your own server, Option B works — `b2bsxlj.com` is already
 
 ---
 
-## Option A — Cloudflare Pages (recommended)
+## Option A — Cloudflare Pages (recommended) → apxess.b2bsxlj.com
 
-No server changes. ~10 minutes.
+No server changes. ~10 minutes. Free global CDN + automatic HTTPS.
 
 1. Push this repo to GitHub (already done on your branch).
 2. Go to <https://dash.cloudflare.com> → **Workers & Pages** → **Create** →
-   **Pages** → **Connect to Git** → select this repository.
-3. Build settings: **Framework preset = None**, **Build command = (empty)**,
-   **Output directory = `/`** (the site is already static). Deploy.
-4. You'll get a URL like `apxess.pages.dev`. Test it.
-5. Add your domain: Pages project → **Custom domains** → add e.g.
-   `shop.b2bsxlj.com` (or `www.apxess.com` if you buy that later).
-6. In **火山引擎 → 云解析 DNS → b2bsxlj.com**, add the CNAME Cloudflare shows
-   you (e.g. `shop  CNAME  apxess.pages.dev`). HTTPS is issued automatically.
+   **Pages** → **Connect to Git** → select this repository
+   (`anasrimoneera-bot/dulizhan`).
+3. **Production branch:** choose `claude/apxess-amazon-affiliate-site-cqq5tg`
+   (the only branch with the site).
+4. Build settings — this is a plain static site, so **no build**:
+   - Framework preset: **None**
+   - Build command: **(leave empty)**
+   - Build output directory: **`/`**
+   Click **Save and Deploy**.
+5. You'll get a preview URL like `apxess-xxx.pages.dev`. Open it to confirm the
+   site works.
+6. Add the custom domain: Pages project → **Custom domains** → **Set up a
+   custom domain** → enter `apxess.b2bsxlj.com`. Cloudflare will show you a
+   **CNAME target** (e.g. `apxess-xxx.pages.dev`).
+7. In **火山引擎 → 云解析 DNS → b2bsxlj.com → 添加记录**, add:
+   ```
+   主机记录(Host): apxess
+   类型(Type):     CNAME
+   记录值(Value):  apxess-xxx.pages.dev   (the exact target from step 6)
+   线路(Line):     默认
+   ```
+   Within a few minutes Cloudflare validates it and issues HTTPS
+   automatically. Visit **https://apxess.b2bsxlj.com**.
 
 > Netlify and Vercel work identically if you prefer them — connect the repo,
 > no build command, publish directory = root.
