@@ -1,36 +1,28 @@
 /* =============================================================================
-   APXESS — Site Data
+   APXESS — Site Data  (edit visually in admin.html, or by hand here)
    -----------------------------------------------------------------------------
-   THIS IS THE ONLY FILE YOU NEED TO EDIT TO MANAGE YOUR STORE.
+   This file holds EVERYTHING on the website:
+     SITE     -> brand, Amazon links, social links, disclosure
+     CONTENT  -> all text & images for every page (home, about, contact, shop)
+     PRODUCTS -> your Amazon products
 
-   1) SITE CONFIG  -> brand name, Amazon Associate tag, social links, disclosure
-   2) PRODUCTS     -> add / remove / edit your Amazon products here
+   EASIEST WAY TO EDIT: open  admin.html  in your browser. It gives you a
+   visual form for every text and image on the site, with live preview, then
+   exports a new copy of THIS file that you re-upload to Cloudflare.
 
-   HOW TO ADD A PRODUCT:
-   Copy one { ... } block inside the PRODUCTS array, paste it, and change the
-   values. The most important field is "amazonUrl" — paste your Amazon Associate
-   (affiliate) product link there. That is where the "View on Amazon" button
-   will send your customer.
-
-   TIP: Keep "id" unique (lowercase, no spaces). It is used in the product page
-   URL, e.g. product.html?id=classic-navy-dad-cap
+   You can still hand-edit values below if you prefer.
    ============================================================================ */
 
 const SITE = {
   brand: "APXESS",
   tagline: "American Caps. Built for Every Day.",
-  // Your Amazon Associates storefront / tag. Optional — used for the
-  // "Shop our full Amazon store" links. Example: "apxess-20"
   amazonAssociateTag: "apxess-20",
-  // Link to your full Amazon Associates storefront (optional).
   amazonStoreUrl: "https://www.amazon.com/",
-  // Social / community links (your Facebook matrix + private community).
   social: {
     facebook: "https://www.facebook.com/",
     instagram: "https://www.instagram.com/",
     email: "hello@apxess.com"
   },
-  // Amazon Associates requires this disclosure to be visible on your site.
   affiliateDisclosure:
     "As an Amazon Associate, APXESS earns from qualifying purchases. " +
     "Prices and availability are accurate as of the date/time indicated and are " +
@@ -38,18 +30,132 @@ const SITE = {
     "at the time of purchase will apply to the purchase of this product."
 };
 
-/* -----------------------------------------------------------------------------
-   PRODUCTS
-   image      : main product photo (use a full URL or a file in assets/img/)
-   gallery    : (optional) extra photos shown on the product page
-   badge      : (optional) small label e.g. "Best Seller", "New"
-   rating     : (optional) 0–5, e.g. 4.7
-   reviews    : (optional) number of reviews
-   category   : used by the shop filter (e.g. "Dad Caps", "Snapback", "Trucker")
-   features   : bullet points shown on the product page
-   amazonUrl  : YOUR AFFILIATE LINK — the "View on Amazon" button target
-   ----------------------------------------------------------------------------- */
+/* All text & images per page. Edit visually in admin.html. */
+const CONTENT = {
+  nav: {
+    home: "Home",
+    shop: "Shop",
+    about: "Our Story",
+    contact: "Contact",
+    amazonButton: "Amazon Store"
+  },
 
+  home: {
+    announcement: "Free 2-day delivery with Amazon Prime · Ships across the USA 🇺🇸",
+    hero: {
+      eyebrow: "Est. USA · Premium Headwear",
+      titleLine1: "American Caps.",
+      titleLine2: "Built for Every Day.",
+      subtitle:
+        "APXESS makes clean, durable baseball caps designed for the daily grind and the weekend road trip. Shop the collection and check out securely on Amazon.",
+      primaryButton: "Shop the Collection",
+      primaryLink: "shop.html",
+      secondaryButton: "Our Story",
+      secondaryLink: "about.html",
+      backgroundImage:
+        "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=1600&q=80"
+    },
+    trust: [
+      { icon: "🧢", title: "Premium Materials", sub: "Built to last" },
+      { icon: "📦", title: "Ships via Amazon", sub: "Fast US delivery" },
+      { icon: "🔄", title: "Easy Returns", sub: "Amazon-backed" },
+      { icon: "⭐", title: "Loved by Thousands", sub: "Verified reviews" }
+    ],
+    featured: {
+      eyebrow: "Fan Favorites",
+      title: "Best-Selling Caps",
+      subtitle:
+        "Our most-loved styles, ready to ship from Amazon. Tap through to grab yours.",
+      viewAllButton: "View All Caps"
+    },
+    story: {
+      eyebrow: "The APXESS Standard",
+      title: "Crafted for the Long Haul",
+      paragraphs: [
+        "Every APXESS cap starts with one question: would we wear it every single day? From brushed cotton twill to adjustable brass buckles, we obsess over the details so your cap looks better the longer you wear it.",
+        "No gimmicks. No throwaway fashion. Just honest, well-made headwear with an all-American attitude."
+      ],
+      button: "Read Our Story",
+      link: "about.html",
+      image:
+        "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?auto=format&fit=crop&w=1000&q=80"
+    },
+    values: {
+      eyebrow: "Why APXESS",
+      title: "Made to a Higher Standard",
+      cards: [
+        { icon: "🏅", title: "Premium Build", text: "Heavyweight cotton, reinforced stitching, and hardware that won't quit on you." },
+        { icon: "📏", title: "Perfect Fit", text: "Adjustable straps and true-to-size crowns designed to fit most heads comfortably." },
+        { icon: "🇺🇸", title: "American Style", text: "Clean, bold, timeless designs inspired by classic American headwear." }
+      ]
+    },
+    community: {
+      title: "Join the APXESS Crew",
+      text:
+        "Follow us for new drops, exclusive Amazon deals, and behind-the-brand stories. Be first to know when a new cap lands.",
+      button: "Follow on Facebook",
+      backgroundImage:
+        "https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=1600&q=80"
+    }
+  },
+
+  shop: {
+    heroTitle: "The Collection",
+    heroSubtitle:
+      "Every APXESS cap, ready to ship from Amazon. Pick your style and check out securely."
+  },
+
+  about: {
+    heroTitle: "Our Story",
+    heroSubtitle:
+      "American attitude. Honest craftsmanship. Caps built to be worn every single day.",
+    sections: [
+      {
+        heading: "",
+        body:
+          "APXESS started with a simple frustration: too many baseball caps look great on day one and fall apart by day thirty. Cheap stitching, flimsy brims, hardware that snaps. We wanted to build the cap we actually reach for every morning — one that ages well and earns its place in the rotation."
+      },
+      {
+        heading: "Built for the Every Day",
+        body:
+          "We obsess over the parts most brands ignore: brushed cotton twill with a soft-yet-sturdy hand, reinforced eyelets, curved brims that hold their shape, and adjustable hardware that stays put. The result is a lineup of caps that feel broken-in from the first wear and only get better with time."
+      },
+      {
+        heading: "An All-American Look",
+        body:
+          "Our designs draw from classic American headwear — clean silhouettes, bold colorways, and just enough attitude. Whether it's a low-profile dad cap, a mesh-back trucker, or a structured snapback, every APXESS piece is made to be effortless to wear and easy to love."
+      },
+      {
+        heading: "Where to Buy",
+        body:
+          "We ship and fulfill through Amazon, so you get fast delivery, easy returns, and the buyer protection you already trust. Browse the collection here on our site, then tap through to check out securely on Amazon."
+      }
+    ],
+    ctaButton: "Shop the Collection",
+    ctaLink: "shop.html"
+  },
+
+  contact: {
+    heroTitle: "Get in Touch",
+    heroSubtitle:
+      "Questions about a cap, an order, or a collaboration? We'd love to hear from you.",
+    intro:
+      "The fastest way to reach us is by email, or come say hi on social — that's where we post new drops, restocks, and exclusive Amazon deals first."
+  },
+
+  footer: {
+    shopHeading: "Shop",
+    companyHeading: "Company",
+    crewHeading: "Join the Crew",
+    crewText: "Follow along for drops, deals, and behind-the-brand.",
+    crewButton: "Follow on Facebook"
+  }
+};
+
+/* -----------------------------------------------------------------------------
+   PRODUCTS  (add/edit visually in admin.html)
+   amazonUrl = YOUR AFFILIATE LINK — the "View on Amazon" button target.
+   ----------------------------------------------------------------------------- */
 const PRODUCTS = [
   {
     id: "classic-navy-dad-cap",
@@ -188,3 +294,10 @@ const PRODUCTS = [
     amazonUrl: "https://www.amazon.com/"
   }
 ];
+
+/* Expose for the visual editor (admin.html). Harmless for the live site. */
+if (typeof window !== "undefined") {
+  window.SITE = SITE;
+  window.CONTENT = CONTENT;
+  window.PRODUCTS = PRODUCTS;
+}

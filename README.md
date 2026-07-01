@@ -37,7 +37,27 @@ python3 -m http.server 8000
 
 ---
 
-## 🧢 How to add or edit products (the only file you touch)
+## 🎨 Easiest way to edit: the visual editor (`admin.html`)
+
+Open **`admin.html`** in your browser (locally, or at
+`https://apxess.b2bsxlj.com/admin.html` once deployed). It's a visual editor for
+**every text and image on the whole site** — homepage hero, brand story, values,
+footer, and all products — with **live preview**.
+
+Workflow:
+1. Open `admin.html`, edit any field on the left, watch the live preview update.
+2. Add images by pasting an image URL, or click **上传 (Upload)** to embed a file.
+3. When happy, click **⬇ 导出 data.js (Export)**. It downloads a new `data.js`.
+4. Put that file into `assets/js/` (replace the old one) and **re-upload the site
+   folder to Cloudflare** (Pages → your project → re-deploy / drag the folder).
+
+> The editor never changes your live site by itself — it only produces the
+> `data.js` file. Nothing publishes until you re-upload. Your edits are auto-saved
+> in your browser (localStorage) so you won't lose work between sessions.
+
+You can also hand-edit `assets/js/data.js` directly if you prefer — see below.
+
+## 🧢 How to add or edit products by hand (optional)
 
 Open **`assets/js/data.js`**. Inside the `PRODUCTS` array, copy one product
 block, paste it, and change the values:

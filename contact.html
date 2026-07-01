@@ -12,52 +12,10 @@
 </head>
 <body>
   <div id="site-header"></div>
-
-  <section class="page-hero">
-    <div class="container">
-      <h1>Get in Touch</h1>
-      <p>Questions about a cap, an order, or a collaboration? We'd love to hear from you.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container prose" style="text-align:center;">
-      <p>The fastest way to reach us is by email, or come say hi on social — that's where we post new drops, restocks, and exclusive Amazon deals first.</p>
-
-      <div class="contact-cards">
-        <div class="contact-card">
-          <div class="ico">✉️</div>
-          <h3>Email Us</h3>
-          <p><a id="contact-email" href="#">hello@apxess.com</a></p>
-        </div>
-        <div class="contact-card">
-          <div class="ico">👍</div>
-          <h3>Facebook</h3>
-          <p><a id="contact-fb" href="#" target="_blank" rel="noopener">Follow the crew</a></p>
-        </div>
-        <div class="contact-card">
-          <div class="ico">🛒</div>
-          <h3>Amazon Store</h3>
-          <p><a id="contact-amz" href="#" target="_blank" rel="sponsored nofollow noopener">Shop on Amazon</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <main id="contact-page"></main>
   <div id="site-footer"></div>
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (typeof SITE === "undefined") return;
-      var email = document.getElementById("contact-email");
-      var fb = document.getElementById("contact-fb");
-      var amz = document.getElementById("contact-amz");
-      if (email) { email.href = "mailto:" + SITE.social.email; email.textContent = SITE.social.email; }
-      if (fb) fb.href = SITE.social.facebook;
-      if (amz) amz.href = SITE.amazonStoreUrl;
-    });
-  </script>
 </body>
 </html>
