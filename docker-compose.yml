@@ -1,0 +1,11 @@
+# APXESS storefront container.
+# Publishes ONLY to localhost:8095 so it never conflicts with your existing
+# sites on 80/443. Your host reverse proxy forwards the subdomain to it.
+services:
+  apxess-site:
+    build: .
+    image: apxess-site:latest
+    container_name: apxess-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8095:80"
